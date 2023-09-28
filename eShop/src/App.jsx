@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { testDatabase } from "./services/test-firestore-service";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ProductsContextProvider } from "./context/ProductContextProvider";
+import { NavBar } from "./components/NavBar/NavBar";
+import KeyboardPage from "./pages/ProductPage/KeyboardPage";
+import SwitchesPage from "./pages/ProductPage/SwitchesPage";
+import DeskmatPage from "./pages/ProductPage/DeskmatPage";
+import AccessoriesPage from "./pages/ProductPage/AccessoriesPage";
+import ContactPage from "./pages/ContactPage/ContactPage";
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [test, setTest] = useState(null);
+	useEffect(() => {
+		testDatabase()
+			.then((test) => setTest(test))
+			.catch((e) => console.log(e));
+		console.log(test);
+	}, []);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<>
+			<ProductsContextProvider>
+				<BrowserRouter>
+					<header>
+						<NavBar />
+					</header>
+					<Routes>
+						<Route path="/" element={<LandingPage />} />
+						<Route path="/product/keyboard-kit" element={<KeyboardPage />} />
+						<Route path="/product/switches" element={<SwitchesPage />} />
+						<Route path="/product/deskmat" element={<DeskmatPage />} />
+						<Route path="/product/accessories" element={<AccessoriesPage />} />
+						<Route path="/contact" element={<ContactPage />} />
+					</Routes>
+				</BrowserRouter>
+			</ProductsContextProvider>
+		</>
+	);
 }
 
-export default App
+export default App;

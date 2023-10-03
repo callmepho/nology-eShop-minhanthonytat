@@ -1,18 +1,16 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ProductsContext } from "../../context/ProductContextProvider";
-import ProductList from "../../containers/ProductList/ProductList";
 
 const ProductPage = () => {
 	const [page, setPage] = useState(null);
-	const { productsData } = useContext(ProductsContext);
-	const { accessories } = productsData;
-	let param = useParams();
-	console.log(param);
+	let { category, id } = useParams();
+
+	useEffect(() => {
+		console.log("page in productpage", page);
+	}, [page]);
 	return (
 		<div>
-			<h1>Accessories</h1>
-			<ProductList productsData={accessories} page={"accessories"} />
+			Test {category} and {id}
 		</div>
 	);
 };

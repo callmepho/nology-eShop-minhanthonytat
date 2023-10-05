@@ -1,6 +1,10 @@
 .navbar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: aqua;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	align-items: center;
+	gap: 10px;
+	background-color: aqua;
+	width: 100%;
 }

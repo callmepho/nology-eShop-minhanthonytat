@@ -6,10 +6,11 @@ import { ProductsContextProvider } from "./context/ProductContextProvider";
 import NavBar from "./components/NavBar/NavBar";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import "./App.scss";
 
 function App() {
 	return (
-		<>
+		<div className="app">
 			<ProductsContextProvider>
 				<BrowserRouter>
 					<header>
@@ -22,7 +23,7 @@ function App() {
 					</Routes>
 				</BrowserRouter>
 			</ProductsContextProvider>
-		</>
+		</div>
 	);
 }
 

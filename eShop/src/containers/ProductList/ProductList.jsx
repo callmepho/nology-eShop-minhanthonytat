@@ -17,11 +17,10 @@ const ProudctList = ({ productsData, page }) => {
 		<div className={styles.test}>
 			<div className={styles.container}>
 				{pageData !== null &&
-					pageData.map((card, index) => {
+					pageData.map((card) => {
 						return (
-							<NavLink to={`/products/${page}/${card.name}`}>
+							<NavLink to={`/products/${page}/${card.id}`} key={card.id}>
 								<ProductCard
-									key={`${index}`}
 									name={card.name}
 									img={card.imgLink}
 									price={card.price}

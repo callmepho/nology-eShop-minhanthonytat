@@ -7,6 +7,7 @@ const ProductPage = () => {
   const [page, setPage] = useState(null);
   const [total, setTotal] = useState(0);
   const [optionTotal, setOptionTotal] = useState(0);
+  const [stock, setStock] = useState(null);
   let { category, id } = useParams();
   const { productsData } = useContext(ProductsContext);
 
@@ -19,6 +20,7 @@ const ProductPage = () => {
   useEffect(() => {
     console.log(page);
     setTotal(page?.price);
+    setStock(page?.stock);
   }, [page]);
   useEffect(() => {
     setTotal(page?.price + optionTotal);
@@ -32,7 +34,12 @@ const ProductPage = () => {
       <div>
         <h1>{page?.name}</h1>
         <h4>Price: ${total}</h4>
-        <Variations page={page} setOptionTotal={setOptionTotal} />
+        {stock !== null && <h4>Stock: {stock}</h4>}
+        <Variations
+          page={page}
+          setOptionTotal={setOptionTotal}
+          setStock={setStock}
+        />
       </div>
     </div>
   );

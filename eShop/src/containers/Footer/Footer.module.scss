@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: blue;
+  color: white;
+}
+
+.footer_socials {
+  display: flex;
+}
+
+.footer_socials_icon {
+  width: 50px;
+  height: 50px;
+  padding: 25px 0px;
+  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(144deg)
+    brightness(113%) contrast(115%);
+}
+
+.footer_links {
+  display: flex;
+  flex-direction: column;
+}
+
+.links {
+  text-decoration: none;
+  color: white;
+}
+
+.footer_about {
+  width: 20%;
+}

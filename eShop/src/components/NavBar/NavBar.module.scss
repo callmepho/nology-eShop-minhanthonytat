@@ -1,10 +1,43 @@
 .navbar {
-	display: flex;
-	position: absolute;
-	top: 0;
-	left: 0;
-	align-items: center;
-	gap: 10px;
-	background-color: aqua;
-	width: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.navbar_title {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navbar_title_link {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar_category {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.navbar_category_links {
+  min-width: max-content;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 15px;
+
+  &:hover {
+    text-decoration: 5px underline blue;
+  }
+}
+
+.active {
+  text-decoration: 5px underline blue;
 }

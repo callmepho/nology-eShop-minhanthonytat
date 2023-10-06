@@ -1,18 +1,27 @@
 import { useState, useEffect } from "react";
 
-const Variations = ({ page, setOptionTotal }) => {
+const Variations = ({ page, setOptionTotal, optionTotal }) => {
   const [selected, setSelected] = useState(null);
   const [variates, setVariates] = useState([]);
+  const [total, setTotal] = useState(0);
   const variations = () => {
     for (const key in page) {
+      console.log(key);
       if (typeof page[key] == "object") {
-        setVariates([...variates, key]);
+        setVariates((variates) => [...variates, key]);
+        console.log(variates);
       }
     }
   };
 
   const handleSelect = (e) => {
-    setSelected(e.target.value);
+    if (!selected) {
+      setSelected(e.target.value);
+      setOptionTotal(optionTotal + page[selected]?.price);
+    } else {
+      setSelected(e.target.value);
+      setOptionTotal(optionTotal + page[selected]?.price);
+    }
   };
 
   const options = (variate) => {
@@ -38,20 +47,20 @@ const Variations = ({ page, setOptionTotal }) => {
   useEffect(() => {
     console.log("selected", selected);
     console.log(variates);
-    const total = variates.reduce((init, next) => {
-      console.log(page[next][selected]);
-      return page[next][selected]["price"] + init;
-    }, 0);
+    // setTotal(total + page[selected]?.price);
     setOptionTotal(total);
   }, [selected]);
+
+  useEffect(() => {
+    console.log(variates);
+  }, [variates]);
   return (
     <div>
-      {variates &&
+      {variates.length > 0 &&
         variates.map((variate) => {
-          console.log(variate);
           return (
             <div>
-              <label htmlFor={variate}>{variate}</label>
+              <label htmlFor={variate}>{variate}: </label>
               <select id={variate} onChange={handleSelect}>
                 {options(variate)}
               </select>

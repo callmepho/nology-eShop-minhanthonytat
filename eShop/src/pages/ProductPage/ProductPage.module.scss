@@ -1,0 +1,21 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.page_info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  width: 50vh;
+}
+
+.page_img {
+  width: 50vh;
+}
+.quantity {
+  width: 3em;
+  text-align: center;
+}

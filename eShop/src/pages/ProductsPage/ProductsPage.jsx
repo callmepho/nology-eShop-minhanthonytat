@@ -7,16 +7,15 @@ const ProductsPage = () => {
   const [page, setPage] = useState(null);
   const { productsData } = useContext(ProductsContext);
   let param = useParams();
+
   useEffect(() => {
     setPage(param.category);
   }, [param]);
-
-  useEffect(() => {
-    console.log("page in productpage", page);
-  }, [page]);
   return (
     <div>
-      <ProductList productsData={productsData[page]} page={page} />
+      {productsData && (
+        <ProductList productsData={productsData[page]} page={page} />
+      )}
     </div>
   );
 };

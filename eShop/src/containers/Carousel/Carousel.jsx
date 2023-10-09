@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
-import { getCarousel } from "../../services/eShop-firestore-service";
+import { useContext, useEffect, useState } from "react";
 import styles from "./Carousel.module.scss";
 import leftArrow from "../../assets/left-arrow.svg";
 import rightArrow from "../../assets/right-arrow.svg";
+import { ProductsContext } from "../../context/ProductContextProvider";
 const Carousel = () => {
-  const [carouselData, setCarouselData] = useState(null);
+  const { carouselData, setCarouselData } = useContext(ProductsContext);
   const [index, setIndex] = useState(0);
-  const getCarouselData = () => {
-    getCarousel()
-      .then((data) => setCarouselData(data))
-      .catch((e) => console.log(e));
-  };
-
   const nextSlide = () => {
     setIndex(index === carouselData["imgLinks"].length - 1 ? 0 : index + 1);
   };
@@ -19,14 +13,6 @@ const Carousel = () => {
   const prevSlide = () => {
     setIndex(index === 0 ? carouselData["imgLinks"].length - 1 : index - 1);
   };
-
-  useEffect(() => {
-    getCarouselData();
-  }, []);
-
-  useEffect(() => {
-    console.log(carouselData);
-  }, [carouselData]);
 
   return (
     <div className={styles.carousel}>

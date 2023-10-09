@@ -6,21 +6,25 @@ import React from "react";
 export const ProductsContext = createContext(null);
 
 export const ProductsContextProvider = ({ children }) => {
-	const [productsData, setProductsData] = useState(null);
-	const reloadProduct = () => {
-		getAllProducts()
-			.then((productsData) => setProductsData(productsData))
-			.catch((e) => console.log(e));
-	};
+  const [productsData, setProductsData] = useState(null);
+  const [carouselData, setCarouselData] = useState(null);
+  const reloadProduct = () => {
+    getAllProducts()
+      .then((data) => {
+        setProductsData(data[1]);
+        setCarouselData(data[0]);
+      })
+      .catch((e) => console.log(e));
+  };
 
-	useEffect(() => {
-		reloadProduct();
-		console.log(productsData);
-	}, []);
+  useEffect(() => {
+    reloadProduct();
+  }, []);
 
-	return (
-		<ProductsContext.Provider value={{ productsData, setProductsData }}>
-			{children}
-		</ProductsContext.Provider>
-	);
+  return (
+    <ProductsContext.Provider
+      value={{ productsData, setProductsData, carouselData, setCarouselData }}>
+      {children}
+    </ProductsContext.Provider>
+  );
 };

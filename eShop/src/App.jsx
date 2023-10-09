@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { testDatabase } from "./services/test-firestore-service";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import { ProductsContextProvider } from "./context/ProductContextProvider";
@@ -14,28 +12,28 @@ import CartPage from "./pages/CartPage/CartPage";
 import CartContextProvider from "./context/CartContextProvider";
 
 function App() {
-	return (
-		<div className="app">
-			<ProductsContextProvider>
-				<CartContextProvider>
-					<BrowserRouter>
-						<header>
-							<NavBar />
-						</header>
-						<Routes>
-							<Route path="/" element={<LandingPage />} />
-							<Route path="/products/:category" element={<ProductsPage />} />
-							<Route path="/products/:category/:id" element={<ProductPage />} />
-							<Route path="/cart" element={<CartPage />} />
-							<Route path="/contact" element={<ContactPage />} />
-							<Route path="/guide" element={<GuidePage />} />
-							<Route path="/layout" element={<LayoutPage />} />
-						</Routes>
-					</BrowserRouter>
-				</CartContextProvider>
-			</ProductsContextProvider>
-		</div>
-	);
+  return (
+    <div className="app">
+      <ProductsContextProvider>
+        <CartContextProvider>
+          <BrowserRouter>
+            <header>
+              <NavBar />
+            </header>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/products/:category" element={<ProductsPage />} />
+              <Route path="/products/:category/:id" element={<ProductPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/guide" element={<GuidePage />} />
+              <Route path="/layout" element={<LayoutPage />} />
+            </Routes>
+          </BrowserRouter>
+        </CartContextProvider>
+      </ProductsContextProvider>
+    </div>
+  );
 }
 
 export default App;

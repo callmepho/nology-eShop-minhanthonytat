@@ -1,6 +1,10 @@
 .card {
   float: left;
-  padding-left: 30px;
-  min-height: 1px;
   margin: 0 auto;
+  transition: 0.2s;
+  border-radius: 5px;
+  &:hover {
+    translate: -2px -2px;
+    background-color: gray;
+  }
 }

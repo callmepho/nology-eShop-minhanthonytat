@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  width: 60vw;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+  &_error {
+    display: flex;
+    width: 60vw;
+    border: 1px solid red;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.card_quantity {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card_quantity_btn {
+}
+
+.card_left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

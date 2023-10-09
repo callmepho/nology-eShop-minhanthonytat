@@ -8,6 +8,23 @@
   width: 100%;
 }
 
+.title {
+  font-family: "Nabla", cursive;
+  font-size: 40px;
+  margin: 0px 0px;
+  transition: 0.2s;
+  text-decoration: none !important;
+  &:hover {
+    transform: translate(-2px, -2px);
+  }
+}
+
+.title_border {
+  padding: 10px;
+  border-radius: 20px;
+  margin: 10px;
+}
+
 .navbar_title {
   display: flex;
   justify-content: flex-start;
@@ -32,12 +49,14 @@
   padding: 10px;
   font-size: 20px;
   border-radius: 15px;
-
+  transition: 0.2s;
   &:hover {
     text-decoration: 5px underline blue;
+    transform: translate(0px, -2px);
   }
 }
 
 .active {
   text-decoration: 5px underline blue;
+  translate: 0 -5px;
 }

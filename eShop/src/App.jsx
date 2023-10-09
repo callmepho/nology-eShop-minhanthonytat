@@ -10,27 +10,32 @@ import "./App.scss";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import GuidePage from "./pages/GuidePage/GuidePage";
 import LayoutPage from "./pages/LayoutPage/LayoutPage";
+import CartPage from "./pages/CartPage/CartPage";
+import CartContextProvider from "./context/CartContextProvider";
 
 function App() {
-  return (
-    <div className="app">
-      <ProductsContextProvider>
-        <BrowserRouter>
-          <header>
-            <NavBar />
-          </header>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/products/:category" element={<ProductsPage />} />
-            <Route path="/products/:category/:id" element={<ProductPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/guide" element={<GuidePage />} />
-            <Route path="/layout" element={<LayoutPage />} />
-          </Routes>
-        </BrowserRouter>
-      </ProductsContextProvider>
-    </div>
-  );
+	return (
+		<div className="app">
+			<ProductsContextProvider>
+				<CartContextProvider>
+					<BrowserRouter>
+						<header>
+							<NavBar />
+						</header>
+						<Routes>
+							<Route path="/" element={<LandingPage />} />
+							<Route path="/products/:category" element={<ProductsPage />} />
+							<Route path="/products/:category/:id" element={<ProductPage />} />
+							<Route path="/cart" element={<CartPage />} />
+							<Route path="/contact" element={<ContactPage />} />
+							<Route path="/guide" element={<GuidePage />} />
+							<Route path="/layout" element={<LayoutPage />} />
+						</Routes>
+					</BrowserRouter>
+				</CartContextProvider>
+			</ProductsContextProvider>
+		</div>
+	);
 }
 
 export default App;

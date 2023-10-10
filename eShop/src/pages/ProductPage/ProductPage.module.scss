@@ -1,21 +1,44 @@
 .page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 30px;
+	height: 60vh;
+	border: 3px solid black;
+	border-radius: 10px;
+	margin-top: 30px;
+	box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.75);
 }
 
 .page_info {
-  display: flex;
-  flex-direction: column;
-  margin-left: 50px;
-  width: 50vh;
+	display: flex;
+	flex-direction: column;
+	margin-left: 50px;
+	width: 50vh;
 }
 
 .page_img {
-  width: 50vh;
+	width: 50vh;
+	&:hover {
+		cursor: pointer;
+	}
 }
 .quantity {
-  width: 3em;
-  text-align: center;
+	width: 3em;
+	text-align: center;
+}
+
+.page_info_form_btn {
+	width: 100%;
+	margin-top: 10px;
+	padding: 15px;
+	background-color: whitesmoke;
+	border: 1px solid black;
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.page_error {
+	color: red;
 }

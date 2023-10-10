@@ -1,10 +1,24 @@
 .card {
-  float: left;
-  margin: 0 auto;
-  transition: 0.2s;
-  border-radius: 5px;
-  &:hover {
-    translate: -2px -2px;
-    background-color: gray;
-  }
+	float: left;
+	margin: 0 auto;
+	transition: 0.2s;
+	border-radius: 5px;
+	padding: 3px;
+	&:hover {
+		translate: -3px -3px;
+		box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.75);
+		background-color: whitesmoke;
+	}
+}
+
+.card_img {
+	height: 200px;
+	width: 300px;
+	object-fit: cover;
+}
+
+.card_info {
+	padding: 0px 10px;
+	text-decoration: none;
+	color: black;
 }

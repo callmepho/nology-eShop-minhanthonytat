@@ -4,9 +4,10 @@ import { ProductsContext } from "../../context/ProductContextProvider";
 import Variations from "../../components/Variations/Variations";
 import styles from "./ProductPage.module.scss";
 import { CartContext } from "../../context/CartContextProvider";
-import Footer from "../../containers/Footer/Footer";
 import Modal from "../../components/Modal/Modal";
-
+import star from "../../assets/star.svg";
+import starFilled from "../../assets/starfilled.svg";
+import _ from "lodash";
 const ProductPage = () => {
 	const [page, setPage] = useState(null);
 	const [total, setTotal] = useState({});
@@ -17,9 +18,9 @@ const ProductPage = () => {
 	const [options, setOptions] = useState({});
 	const [modal, setModal] = useState(false);
 	let { category, id } = useParams();
-
 	const { cart, setCart } = useContext(CartContext);
 	const { productsData } = useContext(ProductsContext);
+	const [favorite, setFavourite] = useState(false);
 
 	const getTotal = () => {
 		return Object.values(total).reduce((init, next) => init + next, 0);
@@ -52,9 +53,7 @@ const ProductPage = () => {
 		};
 		let temp = cart;
 		let index = temp.findIndex(
-			(item) =>
-				item.id == toAdd.id &&
-				JSON.stringify(item.options) === JSON.stringify(toAdd.options)
+			(item) => item.id == toAdd.id && _.isEqual(item.options, toAdd.options)
 		);
 		if (index !== -1) {
 			temp[index].quantity = temp[index].quantity + toAdd.quantity;
@@ -71,7 +70,7 @@ const ProductPage = () => {
 		if (quantity > getStock()) {
 			setQuantity(getStock());
 			setError("Not enough stock.");
-		} else if (quantity <= getStock()) {
+		} else if (quantity <= getStock() && quantity > 0) {
 			setValid(true);
 			updateCart();
 		} else {
@@ -105,7 +104,22 @@ const ProductPage = () => {
 
 			{modal && <Modal img={page?.imgLink} setModal={setModal} />}
 			<div className={styles.page_info}>
-				<h1>{page?.name}</h1>
+				<div className={styles.page_header}>
+					<h1>{page?.name}</h1>
+					{favorite ? (
+						<img
+							className={styles.page_header_star}
+							src={starFilled}
+							onClick={() => setFavourite(false)}
+						/>
+					) : (
+						<img
+							className={styles.page_header_star}
+							src={star}
+							onClick={() => setFavourite(true)}
+						/>
+					)}
+				</div>
 				<form onSubmit={handleSubmit}>
 					<Variations
 						page={page}

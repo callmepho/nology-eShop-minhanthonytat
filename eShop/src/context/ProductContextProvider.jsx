@@ -11,8 +11,13 @@ export const ProductsContextProvider = ({ children }) => {
   const reloadProduct = () => {
     getAllProducts()
       .then((data) => {
-        setProductsData(data[1]);
-        setCarouselData(data[0]);
+        data.forEach((doc) => {
+          if (doc.id === "product") {
+            setProductsData(doc);
+          } else if (doc.id === "carousel") {
+            setCarouselData(doc);
+          }
+        });
       })
       .catch((e) => console.log(e));
   };

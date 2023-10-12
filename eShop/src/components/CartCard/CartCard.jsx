@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from "./CartCard.module.scss";
-
 import { NavLink } from "react-router-dom";
+import { CartContext } from "../../context/CartContextProvider";
 
 const CartCard = ({ item, setCart, cart, setCheckout }) => {
 	const [error, setError] = useState(null);
+	const { editCart, deleteCart } = useContext(CartContext);
 	const stockCheck = () => {
 		setCheckout(false);
 		setError(null);
@@ -17,33 +18,19 @@ const CartCard = ({ item, setCart, cart, setCheckout }) => {
 	};
 
 	const decreaseQuantity = () => {
+		let temp = item;
 		if (item.quantity > 1) {
-			setCart(
-				cart.map((card) => {
-					if (card == item) {
-						card.quantity--;
-						return card;
-					} else {
-						return card;
-					}
-				})
-			);
+			temp.quantity -= 1;
+			editCart(item.id, temp);
 		} else {
-			setCart(cart.filter((card) => card != item));
+			deleteCart(item.id);
 		}
 	};
 
 	const increaseQuantity = () => {
-		setCart(
-			cart.map((card) => {
-				if (card == item) {
-					card.quantity++;
-					return card;
-				} else {
-					return card;
-				}
-			})
-		);
+		let temp = item;
+		temp.quantity += 1;
+		editCart(item.id, temp);
 	};
 
 	useEffect(() => {
@@ -52,14 +39,17 @@ const CartCard = ({ item, setCart, cart, setCheckout }) => {
 	return (
 		<div className={error ? styles.card_error : styles.card}>
 			<div className={styles.card_left}>
-				<NavLink to={`/products/${item.category}/${item.id}`}>
+				<NavLink to={`/products/${item.nav}`}>
 					<img className={styles.card_img} src={item.imgLink} alt={item.id} />
 				</NavLink>
 				<div>
 					<h3>Item: {item.name}</h3>
 					{Object.keys(item.options).length > 0 && <span>Options: </span>}
-					{Object.keys(item.options).map((option) => (
-						<span>{`${option} - ${item.options[option]}  `}</span>
+					{Object.keys(item.options).map((option, index) => (
+						<span
+							key={
+								"cartOption" + index
+							}>{`${option} - ${item.options[option]}  `}</span>
 					))}
 					{error && <p className={styles.card_left_error}>{error}</p>}
 				</div>

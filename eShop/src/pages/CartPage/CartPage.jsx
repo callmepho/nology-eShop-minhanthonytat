@@ -18,7 +18,10 @@ const CartPage = () => {
 		if (!cart) {
 			return;
 		}
-		setTotal(getTotal());
+		console.log(cart);
+		if (cart) {
+			setTotal(getTotal());
+		}
 	}, [cart]);
 
 	return (
@@ -28,7 +31,7 @@ const CartPage = () => {
 					cart.length > 0 &&
 					cart.map((item, index) => (
 						<CartCard
-							key={"cartcard" + index}
+							key={item.id}
 							item={item}
 							setCart={setCart}
 							cart={cart}

@@ -28,15 +28,15 @@ const Variations = ({
 		setStock({ ...stock, [e.target.id]: selected?.stock });
 	};
 
-	const selectOptions = (variate) => {
+	const selectOptions = (variate, index) => {
 		const keys = Object.keys(page[variate]);
 		const option = keys.map((item, index) => (
-			<option key={"option" + index} value={item}>
+			<option key={"options" + index} value={item}>
 				{item}
 			</option>
 		));
 		option.unshift(
-			<option value="" disabled>
+			<option key={"default" + index} value="" disabled>
 				Choose here
 			</option>
 		);
@@ -54,17 +54,17 @@ const Variations = ({
 			{variates.length > 0 &&
 				variates.map((variate, index) => {
 					return (
-						<div>
-							<label key={"label" + index} htmlFor={variate}>
+						<div key={"variate" + index}>
+							<label key={"labels" + index} htmlFor={variate}>
 								{variate}:{" "}
 							</label>
 							<select
-								key={"select" + index}
+								key={"selectOption" + index}
 								id={variate}
 								onChange={handleSelect}
 								defaultValue=""
 								required>
-								{selectOptions(variate)}
+								{selectOptions(variate, index)}
 							</select>
 						</div>
 					);

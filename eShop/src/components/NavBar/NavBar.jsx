@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.scss";
+import { ProductsContext } from "../../context/ProductContextProvider";
 
 const NavBar = () => {
+  const { productsData } = useContext(ProductsContext);
   const style = ({ isActive, isPending }) =>
     isPending
       ? `${styles.navbar_category_links}`

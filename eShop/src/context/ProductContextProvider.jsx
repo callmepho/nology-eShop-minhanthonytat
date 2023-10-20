@@ -1,4 +1,7 @@
-import { getAllProducts } from "../services/eShop-firestore-service.js";
+import {
+  subscribeToCarousel,
+  subscribeToProducts,
+} from "../services/eShop-firestore-service.js";
 import { createContext, useState, useEffect } from "react";
 
 import React from "react";
@@ -6,30 +9,23 @@ import React from "react";
 export const ProductsContext = createContext(null);
 
 export const ProductsContextProvider = ({ children }) => {
-	const [productsData, setProductsData] = useState(null);
-	const [carouselData, setCarouselData] = useState(null);
-	const reloadProduct = () => {
-		getAllProducts()
-			.then((data) => {
-				data.forEach((doc) => {
-					if (doc.id === "product") {
-						setProductsData(doc);
-					} else if (doc.id === "carousel") {
-						setCarouselData(doc);
-					}
-				});
-			})
-			.catch((e) => console.log(e));
-	};
+  const [productsData, setProductsData] = useState(null);
+  const [carouselData, setCarouselData] = useState(null);
 
-	useEffect(() => {
-		reloadProduct();
-	}, []);
+  useEffect(() => {
+    const unsub = subscribeToProducts(setProductsData);
+    return () => unsub();
+  }, []);
 
-	return (
-		<ProductsContext.Provider
-			value={{ productsData, setProductsData, carouselData, setCarouselData }}>
-			{children}
-		</ProductsContext.Provider>
-	);
+  useEffect(() => {
+    const unsub = subscribeToCarousel(setCarouselData);
+    return () => unsub();
+  }, []);
+
+  return (
+    <ProductsContext.Provider
+      value={{ productsData, setProductsData, carouselData, setCarouselData }}>
+      {children}
+    </ProductsContext.Provider>
+  );
 };

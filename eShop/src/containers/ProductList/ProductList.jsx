@@ -5,32 +5,36 @@ import styles from "./ProductList.module.scss";
 import { NavLink, useParams } from "react-router-dom";
 
 const ProudctList = ({ productsData, page }) => {
-	const [pageData, setPageData] = useState(null);
-	useEffect(() => {
-		if (!productsData) {
-			return;
-		}
-		setPageData(productsData);
-	}, [productsData]);
-	return (
-		<div>
-			<hr></hr>
-			<div className={styles.grid}>
-				{pageData !== null &&
-					pageData.map((card) => {
-						return (
-							<NavLink to={`/products/${page}/${card.id}`} key={card.id}>
-								<ProductCard
-									name={card.name}
-									img={card.imgLink}
-									price={card.price}
-								/>
-							</NavLink>
-						);
-					})}
-			</div>
-		</div>
-	);
+  const [pageData, setPageData] = useState(null);
+  useEffect(() => {
+    if (!productsData) {
+      return;
+    }
+    console.log(productsData);
+    setPageData(productsData);
+  }, [productsData]);
+  return (
+    <div>
+      <hr></hr>
+      <div className={styles.grid}>
+        {pageData !== null &&
+          pageData.map((card) => {
+            if (card.category == page) {
+              console.log(page, card.category, "in product list");
+              return (
+                <NavLink to={`/products/${page}/${card.id}`} key={card.id}>
+                  <ProductCard
+                    name={card.name}
+                    img={card.imgLink}
+                    price={card.price}
+                  />
+                </NavLink>
+              );
+            }
+          })}
+      </div>
+    </div>
+  );
 };
 
 export default ProudctList;

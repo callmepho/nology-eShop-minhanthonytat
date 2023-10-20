@@ -8,15 +8,15 @@ const Carousel = () => {
   const { carouselData, setCarouselData } = useContext(ProductsContext);
   const [index, setIndex] = useState(0);
   const nextSlide = () => {
-    setIndex(index === carouselData["imgLinks"].length - 1 ? 0 : index + 1);
+    setIndex(index === carouselData.length - 1 ? 0 : index + 1);
   };
 
   const prevSlide = () => {
-    setIndex(index === 0 ? carouselData["imgLinks"].length - 1 : index - 1);
+    setIndex(index === 0 ? carouselData.length - 1 : index - 1);
   };
 
   const carouselLoop = () => {
-    if (index === carouselData["imgLinks"].length - 1) {
+    if (index === carouselData.length - 1) {
       return setIndex(0);
     }
     return setIndex(index + 1);
@@ -35,7 +35,7 @@ const Carousel = () => {
   return (
     <div className={styles.carousel}>
       {carouselData !== null &&
-        carouselData.imgLinks.map((item, idx) => (
+        carouselData.map((item, idx) => (
           <NavLink key={"carouselnav" + idx} to={item.link}>
             <img
               key={"carousel" + idx}
@@ -61,7 +61,7 @@ const Carousel = () => {
       />
       <span className={styles.dots}>
         {carouselData !== null &&
-          carouselData.imgLinks.map((img, idx) => (
+          carouselData.map((img, idx) => (
             <button
               key={idx}
               onClick={() => setIndex(idx)}

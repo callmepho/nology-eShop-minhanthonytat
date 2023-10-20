@@ -1,66 +1,67 @@
 * {
-	text-decoration: none;
-	color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .card {
-	display: flex;
-	width: 60vw;
-	align-items: center;
-	padding: 10px;
-	justify-content: space-between;
-	box-shadow: 6px 5px 23px 0px rgba(0, 0, 0, 0.75);
-	&_error {
-		display: flex;
-		width: 60vw;
-		border: 3px solid red;
-		box-shadow: 6px 5px 23px 0px rgba(0, 0, 0, 0.4);
-		padding: 10px;
-		align-items: center;
-		justify-content: space-between;
-	}
+  display: flex;
+  width: 60vw;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+  box-shadow: 6px 5px 23px 0px rgba(0, 0, 0, 0.75);
+  &_error {
+    display: flex;
+    width: 60vw;
+    border: 3px solid red;
+    box-shadow: 6px 5px 23px 0px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .card_quantity {
-	display: flex;
-	align-items: center;
-	gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .card_img {
-	height: 200px;
-	width: 200px;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
 }
 
 .card_left {
-	display: flex;
-	align-items: center;
-	gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 .card_left_error {
-	color: red;
+  color: red;
 }
 
 .card_right {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card_quantity_btn {
-	border: none;
-	font-size: 25px;
-	background-color: white;
-	&:hover {
-		cursor: pointer;
-		font-weight: bold;
-	}
+  border: none;
+  font-size: 25px;
+  background-color: white;
+  &:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
 }
 
 .card_remove {
-	color: red;
-	&:hover {
-		cursor: pointer;
-	}
+  color: red;
+  &:hover {
+    cursor: pointer;
+  }
 }

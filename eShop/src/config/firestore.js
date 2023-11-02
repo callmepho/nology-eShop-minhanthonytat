@@ -6,12 +6,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBW511PmJPy3G-siar7hCC4Fn5fB6WrLEY",
-  authDomain: "nology-eshop-minhanthony-67797.firebaseapp.com",
-  projectId: "nology-eshop-minhanthony-67797",
-  storageBucket: "nology-eshop-minhanthony-67797.appspot.com",
-  messagingSenderId: "783888532738",
-  appId: "1:783888532738:web:843996e1dcb472479b6e1b",
+	apiKey: "AIzaSyBW511PmJPy3G-siar7hCC4Fn5fB6WrLEY",
+	authDomain: "nology-eshop-minhanthony-67797.firebaseapp.com",
+	projectId: "nology-eshop-minhanthony-67797",
+	storageBucket: "nology-eshop-minhanthony-67797.appspot.com",
+	messagingSenderId: "783888532738",
+	appId: "1:783888532738:web:843996e1dcb472479b6e1b",
 };
 
 // Initialize Firebase

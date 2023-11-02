@@ -6,7 +6,7 @@
 
 This is a project to create a online store using React as frontend and firebase/firestore as backend.
 
-Deployed site : [Link]("https://keebstore-minhanthonytat.netlify.app/)
+Deployed site : [Link](https://keebstore-minhanthonytat.netlify.app/)
 
 ## Tech-stack
 

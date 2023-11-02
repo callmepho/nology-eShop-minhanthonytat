@@ -18,7 +18,6 @@ const CartPage = () => {
 		if (!cart) {
 			return;
 		}
-		console.log(cart);
 		if (cart) {
 			setTotal(getTotal());
 		}

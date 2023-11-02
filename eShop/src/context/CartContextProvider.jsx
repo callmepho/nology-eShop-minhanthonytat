@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import {
 	doc,
-	setDoc,
 	addDoc,
 	collection,
 	updateDoc,
@@ -18,25 +17,19 @@ const CartContextProvider = ({ children }) => {
 	const addToCart = async (cartItem) => {
 		try {
 			await addDoc(collection(db, "cart"), cartItem);
-		} catch (e) {
-			console.log(e);
-		}
+		} catch (e) {}
 	};
 
 	const editCart = async (id, cartItem) => {
 		try {
 			await updateDoc(doc(db, "cart", id), cartItem);
-		} catch (e) {
-			console.log(e);
-		}
+		} catch (e) {}
 	};
 
 	const deleteCart = async (id) => {
 		try {
 			await deleteDoc(doc(db, "cart", id));
-		} catch (e) {
-			console.log(e);
-		}
+		} catch (e) {}
 	};
 
 	useEffect(() => {

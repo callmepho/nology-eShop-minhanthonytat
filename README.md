@@ -1,6 +1,6 @@
 # nology-eShop-minhanthonytat
 
-## E-commerce site mimicing a custom mechanical keyboard vendor
+## KeebStore
 
 <img width="960" alt="ecommerce" src="https://github.com/callmepho/nology-eShop-minhanthonytat/assets/47295382/dcb96cb7-02d5-4cf5-967a-c5503c90dceb">
 
